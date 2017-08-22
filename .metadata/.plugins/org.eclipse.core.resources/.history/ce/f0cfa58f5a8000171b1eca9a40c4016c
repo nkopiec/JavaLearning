@@ -1,0 +1,10 @@
+package pl.natalia.showing;
+
+public class HelloWorld {
+	public static void main(String[] args) {
+		short namberOne = 100;
+		short namberTwo = 100;
+		int sum = namberOne + namberTwo;
+		System.out.println(sum);
+	}
+}
