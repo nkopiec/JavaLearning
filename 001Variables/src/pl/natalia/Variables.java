@@ -11,5 +11,7 @@ public class Variables {
 		System.out.println("Inputed below text");
 		System.out.println(chars);
 		scanner.close();
+		
+		
 	}
 }
