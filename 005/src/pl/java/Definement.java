@@ -1,5 +1,7 @@
 package pl.java;
 
+import pl.java.packing.Disk;
+
 public class Definement {
 	public static void main(String[] args) {
 		int a1 = 9;
@@ -48,6 +50,17 @@ public class Definement {
 		disk1.show();
 		disk1.setPrice(45.50); 
 		disk1.show();
+		
+		ParaII para1 = new ParaII(1, 5);
+		ParaII para2 = new ParaII(2, 4);
+		para1.show("ParaII 1 =");
+		para2.show("ParaII 2 =");
+		ParaII sumaPar = para1.add(para2);
+		sumaPar.show("Suma par =");
+		para1.set(para2);
+		para1.show("Teraz para 1 = ");
+		
+		
 				
 	}
 }

@@ -1,4 +1,5 @@
-package pl.java;
+package pl.java.packing;
+
 
 public class Disk {
 	private static double vat;

@@ -1,4 +1,4 @@
-package pl.java;
+                         package pl.java;
 
 public class Bookshop {
 	private String title;
