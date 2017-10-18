@@ -60,7 +60,43 @@ public class Definement {
 		para1.set(para2);
 		para1.show("Teraz para 1 = ");
 		
+		double a = 12.0, b = 14.0, q = 4.0;
 		
-				
+		Work w = new Work();
+		w.report(a,  b, q);
+		a++;
+		b++;
+		q++;
+		w.report(a, b, q);
+		a++;
+		b++;
+		q++;
+		w.report(a, b, q);
+		
+		Trojka t = new Trojka(12, 14, 4);
+		t.report();
+		t.increase();
+		t.report();
+		t.increase();
+		t.report();
+		
+		Book book = new Book("James Gossling", "Moja Java", "wnt", 2009, "dhja4567", 34.57, 3);
+		int n = 100;
+		book.buy(n);
+		double koszt = n * book.getPrice();
+		System.out.println("Na zakup " + n + " ksi¹¿ek:");
+		System.out.println(book.getAuthor());
+		System.out.println(book.getTitle());
+		System.out.println(book.getPublisher());
+		System.out.println(book.getYear());
+		System.out.println(book.getIdent());
+		System.out.println("-----------\nwydano: " + koszt);
+		book.sell(90);
+		System.out.println("-----------");
+		System.out.println("Po sprzeda¿y zosta³o " + book.gatQualitity() + " pozycji");
+		
+		
 	}
+	
 }
+	

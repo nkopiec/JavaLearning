@@ -56,6 +56,14 @@ public class Bookshop {
 	public void pay(int n) {
 		qualitity -= n;
 	}
+	
+	public void buy(int n) {
+		qualitity += n;
+	}
+	
+	public void sell(int n) {
+		qualitity -= n;
+	}
 }
 
 
