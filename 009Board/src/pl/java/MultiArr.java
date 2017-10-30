@@ -8,7 +8,8 @@ public class MultiArr {
 		int[][] m2 = new int[n][];
 		for (int i = 0; i < m2.length; i++) {
 			m2[i] = new int[w[i]];
-				for (int j = 0; j < m2.length; j++) m2[i][j] = i + j;
+				for (int j = 0; j < m2.length; j++)
+					m2[i][j] = i + j;
 				}
 		for (int i = 0; 1 < m2.length; i++) {
 			System.out.print("Rozmiar " + i + "-go wiersza " + m2[i].length);
