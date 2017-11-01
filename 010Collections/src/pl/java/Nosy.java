@@ -1,7 +1,9 @@
 package pl.java;
 
-public class Nosy extends TV1 {
+public class Nosy extends TV1 implements ChangeChannel {
 
+	
+	static int a = 56;
 	@Override
 	public void onTV1(boolean b) {
 		if(b) {
@@ -14,6 +16,12 @@ public class Nosy extends TV1 {
 			@Override
 			public String toString() {
 				return "metoda toString"; 
+			}
 			
-	}
+			@Override
+			public void changeChannel() {
+				System.out.println("Zmiana kana³u ");
+			
+			
+		}
 }
