@@ -44,4 +44,9 @@ public class Main {
 		}
 		
 	}
+
+	public void addingString() {
+		// TODO Auto-generated method stub
+		
+	}
 }
