@@ -1,6 +1,6 @@
 package pl.java;
 
-public class Circle1 {
+/*public class Circle1 {
 		public static void doubling(Circle1 c) {
 			double.tempR = c.getRadius;
 			tempR = tempR * 2;
@@ -19,3 +19,4 @@ public class Circle1 {
 
 
 }
+*/
