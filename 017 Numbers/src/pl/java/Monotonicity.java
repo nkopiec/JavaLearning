@@ -12,14 +12,6 @@ public class Monotonicity {
 			
 			System.out.println("Quote third figure");
 			int third = input.nextInt();
-			
-			/*while(first > second ) {
-				while (first > third) {
-					
-				}
-			}
-			System.out.println("first is max");*/
-			
 			if (first > second & first > third ) {
 				System.out.println("Figure " + first + " is the biggest");
 			} else if (second > first & second > third) {
