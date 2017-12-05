@@ -7,6 +7,8 @@ public class Continue {
 				System.out.println(i);
 				continue;
 			}
+		}
+		for(int i = 1; i < 123; i++){
 			while (i % 2 != 1) {
 				System.out.println(i);
 				break;
