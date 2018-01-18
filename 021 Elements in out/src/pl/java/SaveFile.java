@@ -9,19 +9,15 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 public class SaveFile {
-	public static void main(String[] args) {
-		 SaveFile("C:\\Users\\Lenovo\\Documents\\bla.log", "C:\\Users\\Lenovo\\Documents\\nothing.log");
-		}
-	private static void SaveFile(String file, String file2) {
-		// TODO Auto-generated method stub
-		
+	public static void main(String[] args) throws IOException {
+		 convert("C:\\Users\\Lenovo\\Documents\\bla.log", "C:\\Users\\Lenovo\\Documents\\nothing.log");
 	}
-	public static void convert(String fin, String inCp,
-			String fout, String outCp) throws IOException {
+	
+	public static void convert(String inCp, String outCp) throws IOException {
 		try (BufferedReader in = new BufferedReader(
-				new InputStreamReader(new FileInputStream(fin), inCp));
-				BufferedWriter out = new BufferedWriter(
-						new OutputStreamWriter(new FileOutputStream(fout), inCp))) {
+					new InputStreamReader(new FileInputStream(inCp)));
+			BufferedWriter out = new BufferedWriter(
+					new OutputStreamWriter(new FileOutputStream(outCp)))) {
 			String line;
 			while ((line = in.readLine()) != null) {
 				out.write(line);
