@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 public class CreateFile {
 
 	public static void main(String[] args) {
-		File fi = new File("C:/Andrzej/file.txt");
+		File fi = new File("C:/natalia/file.txt");
 		boolean fileExists = fi.exists();
 		try {
 			if(!fileExists) {

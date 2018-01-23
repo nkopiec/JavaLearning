@@ -23,7 +23,7 @@ public class CreateFileI {
 		
 		}
 		try(PrintWriter out = new PrintWriter("C:/Andrzej/fileI.txt")){
-		    out.println("genius");
+		    out.println("genius\n lalllala \n kskskksksks\n kdkkdkd");
 		    out.close();
 	}
 	}
