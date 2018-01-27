@@ -22,10 +22,10 @@ public class CopyFile {
 
 	        byte[] buffer = new byte[1024];
 
-	        int length = 0;
+	        int length = 4;
 	    	
 
-	            outStream.write(buffer, 0, length);
+	            outStream.write(buffer, 1, length);
 	        
 	        
 
