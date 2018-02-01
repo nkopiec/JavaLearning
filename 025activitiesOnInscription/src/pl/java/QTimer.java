@@ -11,7 +11,7 @@ public class QTimer {
 		private boolean counting;
 		private boolean measured;
 		
-		private QTimer start() {
+		QTimer start() {
 			if (counting) emsg("Can'tstart counting timer");
 			counting = true;
 			measured = false;
