@@ -22,4 +22,14 @@ public class matcher {
 		return null;
 	}
 
+	public static void reset(String line) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static String replaceFirst(String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
