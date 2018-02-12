@@ -17,17 +17,17 @@ public class ReplaceFirst {
 				Path out = Paths.get("Tekst2.txt");
 				String regex4 = "\\s*//.";
 				Pattern pattern;
-				Pattern pattern4 = pattern.compile(regex4);
-				Matcher matcher4 = pattern.matcher("");
+	//			Pattern pattern4 = pattern.compile(regex4);
+	//			Matcher matcher4 = pattern.matcher("");
 				
 				ArrayList<String> newLines = new ArrayList<String>();
 				Charset cs = Charset.defaultCharset();
-				for (String line : Files.readAllLines(in, cs)) {
-					matcher.reset(line);
-					String nline = matcher.replaceFirst("");
-					newLines.add(nline);
-				}
-				Files.write(out, newLines, cs);
+//				for (String line : Files.readAllLines(in, cs)) {
+	//				matcher.reset(line);
+	//				String nline = matcher.replaceFirst("");
+	//				newLines.add(nline);
+	//			}
+	//			Files.write(out, newLines, cs);
 				
 
 	}
