@@ -16,7 +16,7 @@ public class DateTimeII {
 			case "set": c.set(field, value); break;
 			case "add": c.add(field, value); break;
 			case "roll": c.roll(field, value); break;
-			default: say("B³êdna operacja"); break;
+			default: say("B³êdna operacja"); break; 
 			
 		}
 		say("Aktualne ustawienia kalendarza: " + c.get(Calendar.YEAR) + '-' + (c.get(Calendar.MONTH) + 1) + '-' +c.get(Calendar.DATE));
@@ -27,11 +27,15 @@ public class DateTimeII {
 		String in;
 		int d = 0;
 		while ((in = JOptionPane.showInputDialog("DATE:")) != null) {
-			d = Integer.parseInt(in);
+			try {
+				d = Integer.parseInt(in);
+			} catch (NumberFormatException exception) {
+				System.out.println("Inputed wrong argument");
+				break;
+			}
 			show("set", "DATE", Calendar.DATE, d);
 			show("add", "DATE", Calendar.DATE, d);
-			show("roll"
-					+ "", "DATE", Calendar.DATE, d);
+			show("roll"	+ "", "DATE", Calendar.DATE, d);
 		}
 	}
 
