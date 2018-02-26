@@ -22,6 +22,7 @@ public class DataTimeI {
 			"Months day: " + d.getDayOfMonth(),
 			"Weeks day: " + d.getDayOfWeek()
 			
+			
 			);
 
 	}
