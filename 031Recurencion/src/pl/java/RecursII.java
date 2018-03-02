@@ -10,6 +10,7 @@ public class RecursII {
 		}
 		public static void main(String[] args) {
 			show2(1);
+			
 	}
 
 }
