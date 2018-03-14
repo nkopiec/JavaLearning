@@ -20,7 +20,7 @@ public class FigureTest {
 		figurs[3] = ractangle1;
 		figurs[4] = figure;
 		
-		for (int i = 0; i<5 ; i++) {
+		for (int i = 0; i < 5 ; i++) {
 			System.out.println(figurs[i]);
 		}
 		
