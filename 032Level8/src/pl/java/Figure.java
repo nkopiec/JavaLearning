@@ -1,6 +1,6 @@
 package pl.java;
 
-public class Figure {
+public /*abstract*/ class Figure {
 	String color;
 	boolean impletion;
 	
