@@ -15,11 +15,14 @@ public class Circle extends Figure {
 		ray = r;
 		
 	}
-	public double calculateCircuit() {
+	public double getRay() {
+		return ray;
+	}
+	public final double calculateCircuit() {
 		return 2*Math.PI*ray;
 	}
 	
-	public double calculateArea() {
+	public  double calculateArea() {
 		return Math.PI*ray*ray;
 	}
 	

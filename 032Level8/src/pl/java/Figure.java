@@ -20,5 +20,7 @@ public class Figure {
 		
 
 	}
+//	public abstract double calculateArea();
+//	public abstract double calculateCircuit();
 
 }

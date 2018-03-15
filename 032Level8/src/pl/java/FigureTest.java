@@ -9,20 +9,26 @@ public class FigureTest {
 		Circle circle1 = new Circle(50);
 		Ractangle ractangle = new Ractangle();
 		Ractangle ractangle1 = new Ractangle(7, 3, "Red", true);
-		Figure figure = new Figure();
 		
 		
 		
-		Figure[] figurs = new Figure[5];
+		
+		Figure[] figurs = new Figure[4];
 		figurs[0] = circle;
 		figurs[1] = circle1;
 		figurs[2] = ractangle;
 		figurs[3] = ractangle1;
-		figurs[4] = figure;
 		
-		for (int i = 0; i < 5 ; i++) {
-			System.out.println(figurs[i]);
-		}
+	
+		for (int i = 0; i < 4 ; i++) {
+			if (figurs[i] instanceof Circle) {
+				System.out.println(((Circle)figurs[i]).calculateArea());
+			}
+			if (figurs[i] instanceof Ractangle) {
+				System.out.println(((Ractangle)figurs[i]).calculateArea());
+			}
+			
+	}
 		
 	}
 
