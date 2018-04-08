@@ -26,13 +26,10 @@ public class ProjectI {
 		  // interpret the user's choice
 		  if (n == JOptionPane.YES_OPTION) // uzywamy jako math 
 		  {
-		    String n1 = JOptionPane.showInputDialog("Give first number");
+		    String n1 = JOptionPane.showInputDialog("Give moth operation: ");
 		    Scanner N1 = new Scanner(System.in);
-		    String ms = JOptionPane.showInputDialog("Give mathematical symbol ");
-		    Scanner mts = new Scanner(System.in);
-		    String n2 = JOptionPane.showInputDialog("Give second number");
-		    Scanner N2 = new Scanner(System.in);
-		    System.out.printf("Result: " + n1 + ms + n2);
+		   
+		    System.out.printf("Result: " + n1 );
 		    //Savepoint.class.equals(n2);
 		  //System.out.println(Savepoint.class);
 		    String regex = "[0-9]+";
