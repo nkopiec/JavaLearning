@@ -30,8 +30,6 @@ public class ProjectI {
 		    Scanner N1 = new Scanner(System.in);
 		   
 		    System.out.printf("Result: " + n1 );
-		    //Savepoint.class.equals(n2);
-		  //System.out.println(Savepoint.class);
 		    String regex = "[0-9]+";
 		    Pattern pattern = Pattern.compile(regex);
 		    String txt = n1;
@@ -39,6 +37,11 @@ public class ProjectI {
 		    boolean match = matcher.matches();
 		    System.out.println();
 		    System.exit(0);
+		    
+		    
+		    else if (n == JOptionPane.NO_OPTION) {
+		    	
+		    }
 		  
 		  }
 		}

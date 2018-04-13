@@ -1,15 +1,17 @@
 package pl.java;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.*;
 import static javax.swing.JOptionPane.*;
 import java.util.StringTokenizer;
 
 public class MathOperations {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		String normalQuest = "Give first number operation and second number",
 				errorQuest = "Flawed data. Try again.\n" + normalQuest,
 				quest = normalQuest,
@@ -39,40 +41,19 @@ public class MathOperations {
 			showMessageDialog(null, "Result = " + res);
 			quest = normalQuest;
 			expr = "";
+		     
+			      PrintWriter zapis = new PrintWriter("file.txt");
+			      zapis.println(res);
+			      zapis.close();
+			      
+			      File file = new File("file.txt");
+			      Scanner in = new Scanner(file);
+			      String zdanie = in.nextLine();
+			      
+			      
+	
+		}  
 			
-			
-		}
-		//new BufferedReader(new FileReader(new File("C:/Andrzej/file.txt")));
-		//File file = new File(C:/Andrzej/file.txt);
-		//Scanner odczyt = new Scanner(new File("file0.txt"));
-		//String text = odczyt.nextLine();
-		
-		//zapis danych do pliku
-		String filePath = "C:/Andrzej/file.txt";
-				FileWriter fileWriter = null;
-				try {
-				    fileWriter = new FileWriter(filePath);
-				    fileWriter.write(Integer.toString(res));
-				} finally {
-				    if (fileWriter != null) {
-				        fileWriter.close();
-				    }
-				}
-				
-			//odczyt danych z pliku
-				
-						
-						BufferedReader fileReader = null;
-
-						try {
-						    fileReader = new BufferedReader(new FileReader(filePath));
-						    String numberAsString = fileReader.readLine();
-						    res = Integer.parseInt(numberAsString);
-						} finally {
-						    if (fileReader != null) {
-						        fileReader.close();
-						    }
-						}
 	}
 
 }
