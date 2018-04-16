@@ -48,7 +48,7 @@ public class MathOperations {
 			      
 			      File file = new File("file.txt");
 			      Scanner in = new Scanner(file);
-			      String zdanie = in.nextLine();
+			      String story = in.nextLine();
 			      
 			      
 	
