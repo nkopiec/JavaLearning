@@ -28,14 +28,7 @@ public class ProjectI {
 				null,
 				options,
 				options[0]);
-		
-		if (n == JOptionPane.YES_OPTION) {
-			inputCalculationsWindow();
-		} else if (n == JOptionPane.NO_OPTION) {
-			showHistory();	
-		} else if (n == JOptionPane.CLOSED_OPTION) {
-			System.exit(0);
-		}
+		if n = YES.
 	}
 	
 	public static void inputCalculationsWindow() throws FileNotFoundException {
