@@ -1,4 +1,4 @@
-package pl.java;
+/*package pl.java;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -56,4 +56,4 @@ public class MathOperations {
 			
 	}
 
-}
+}*/

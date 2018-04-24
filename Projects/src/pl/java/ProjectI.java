@@ -1,4 +1,4 @@
-package pl.java;
+/*package pl.java;
 import static javax.swing.JOptionPane.showInputDialog;
 import static javax.swing.JOptionPane.showMessageDialog;
 import java.io.File;
@@ -91,4 +91,4 @@ public class ProjectI {
 	    System.out.println(story);
 	}
 
-}
+}*/
