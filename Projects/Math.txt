@@ -1,7 +1,10 @@
-Error: 2 - 1
-Error: 2 - 1
-Error: 1-2
-Error: 1-2
-Error: 1-2
-Error: 2-1
-Error: 2-1
+Error: sdfds
+Success: 34 + 34 = 68.0
+Error: 34 k 34
+Error: 34 34 34 34
+Success: 34 / 0 = Infinity
+Error: 5 / 0
+Success: 0 / 0 = NaN
+Error: 3 / 0
+Error: 0 / 0
+Error: 99 \ 3

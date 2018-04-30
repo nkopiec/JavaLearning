@@ -1,8 +1,5 @@
 package pl.java;
 
-import static javax.swing.JOptionPane.showMessageDialog;
-
-
 import java.io.IOException;
 import java.util.StringTokenizer;
 
@@ -23,6 +20,11 @@ public class Operation {
 	public Operation() {
 		this.history = new History() ;
 	}
+
+	public static void main(String[] args) throws IOException {
+		Operation dialogs = new Operation();
+		dialogs.showInitDialog();
+	}
 	
 	public void showInitDialog() throws IOException {
 		int result;
@@ -31,11 +33,12 @@ public class Operation {
 					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
 					null, new String[] {option0, option1, option2}, null);
 		} while (result == -1);
+		
 		if (result == JOptionPane.YES_OPTION) {
 			showHistoryDialog();
-		}else if (result == JOptionPane.NO_OPTION) {
+		} else if (result == JOptionPane.NO_OPTION) {
 			showInputMathDialog();
-		}else if (result == JOptionPane.CANCEL_OPTION) {
+		} else if (result == JOptionPane.CANCEL_OPTION) {
 			System.exit(1);
 		}
 	}
@@ -47,7 +50,6 @@ public class Operation {
 			historyFile = "lack history";
 		}
 		
-		
 		int result;
 		do {
 			result = JOptionPane.showOptionDialog(null, historyFile, activity,
@@ -57,55 +59,44 @@ public class Operation {
 		if (result == JOptionPane.YES_OPTION) {
 			showInputMathDialog();
 		} else if (result == JOptionPane.NO_OPTION) {
-			showInitDialog();
+			System.exit(0);
 		}
 	}
-	
 
 	public void showInputMathDialog() throws IOException {
 		String mathOperations = JOptionPane.showInputDialog(null, mathActivity, activity, JOptionPane.QUESTION_MESSAGE);
 		
-		if (mathOperations == null) {
-			showInitDialog();
-			
-		}
-		mathOperations = mathOperations.trim();
-		String[] mathElements = mathOperations.split("\\s+");
-		
-		if (mathElements.length != 3) {
-			showMathResultDialog(mathOperations, true);
-		}
-		
 		try {
+			if (mathOperations == null) {
+				throw new IllegalArgumentException();
+			}
+
 			StringTokenizer st = new StringTokenizer(mathOperations);
-			int num1 = Integer.parseInt(st.nextToken());
-			String sop = st.nextToken(); 
-			int num2 = Integer.parseInt(st.nextToken());
+			double number1 = Double.parseDouble(st.nextToken());
+			String operation = st.nextToken(); 
+			double number2 = Double.parseDouble(st.nextToken());
 			
-			if(sop.length() != 1 || st.hasMoreTokens())
-			throw new  IllegalArgumentException();
-			int result;
-			switch (sop.charAt(0)) {
-				case '+' : result = num1 + num2; break;
-				case '-' : result = num1 - num2; break;
-				case '*' : result = num1 * num2; break;
-				case '/' : result = num1 / num2; break;
+			if(operation.length() != 1 || st.hasMoreTokens()) {
+				throw new IllegalArgumentException();
+			}
+			
+			double result;
+			switch (operation.charAt(0)) {
+				case '+' : result = number1 + number2; break;
+				case '-' : result = number1 - number2; break;
+				case '*' : result = number1 * number2; break;
+				case '/' : 
+					result = number1 / number2;
+					if (Double.isInfinite(result) || Double.isNaN(result)) {
+						throw new IllegalArgumentException();
+					}
+					break;
 				default : throw new IllegalArgumentException();
-				
 			}
-			showMessageDialog(null, "Result = " + result);
-			int result1 = 0;
-			do {
-				result = JOptionPane.showOptionDialog(null, select, activity, 
-						JOptionPane.OK_OPTION, JOptionPane.QUESTION_MESSAGE,
-						null, new String[] {option0, option1, option2}, null);
-			} while (result1 == -1);
-			if (result1 == JOptionPane.OK_OPTION) {
-				showInitDialog();
-			}
-		
-		} catch (NumberFormatException exception) {
 			
+			showMathResultDialog(mathOperations + " = " + result, false);
+		} catch (Exception exception) {
+			showMathResultDialog(mathOperations, true);
 		}
 	
 	}
@@ -119,22 +110,16 @@ public class Operation {
 		}
 		int result;
 		do {
-			result = JOptionPane.showOptionDialog(null, select, activity, 
+			result = JOptionPane.showOptionDialog(null, mathOperations, activity, 
 					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE,
 					null, new String[] {option0, option1, option2}, null);
 		} while (result == -1);
 		if (result == JOptionPane.YES_OPTION) {
 			showHistoryDialog();
-		}else if (result == JOptionPane.NO_OPTION) {
+		} else if (result == JOptionPane.NO_OPTION) {
 			showInputMathDialog();
-		}else if (result == JOptionPane.CANCEL_OPTION) {
+		} else if (result == JOptionPane.CANCEL_OPTION) {
 			System.exit(1);
 		}
-		
-	}
-
-	public static void main(String[] args) throws IOException {
-		Operation dialogs = new Operation();
-		dialogs.showInitDialog();
 	}
 }
