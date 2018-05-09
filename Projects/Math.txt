@@ -8,3 +8,4 @@ Success: 0 / 0 = NaN
 Error: 3 / 0
 Error: 0 / 0
 Error: 99 \ 3
+Error: 
