@@ -3,6 +3,8 @@ package pl.java;
 import java.awt.BorderLayout;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -39,22 +41,30 @@ public class CheckYourLink {
 			checkURL();
 		} else if (result == JOptionPane.NO_OPTION) {
 			System.exit(0);
-		}
-		
-		 
-		
+		}	
 	}
-	public static void checkURL() {
+	public static void checkURL() throws IOException {
 		JTextField textField = new JTextField();
 		String URL = textField.getText();
 		System.out.println(URL);
 		 Scanner scan = new Scanner(System.in);
-		if (textField != null) {
-		// okno sprawdzaj¹ce czy URL 
-		} else if (textField == null) {
-		int result1 = JOptionPane.showOptionDialog(null, titleWindow, statement2, 
-					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE,
-					null, new String[] {choice2, exit}, null);
+		if (URL != null) {
+		String regex =  "/href=\".*?\"/.";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(URL);
+		boolean match = matcher.matches();
+		//jesli jest b³edny oraz jesli jest dobry (do while )
+		int information1 = JOptionPane.showOptionDialog(null, statement2, titleWindow, 
+				JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE,
+				null, new String[] {choice2, exit}, null);
+		if (information1 == JOptionPane.CLOSED_OPTION) {
+			System.exit(0);
+		} else if (information1 == JOptionPane.YES_OPTION) {
+			choice();
+		} else if (information1 == JOptionPane.NO_OPTION) {
+			System.exit(0);
+		}
+		// jesli URL jest nullem 
 		}
 	}
 
