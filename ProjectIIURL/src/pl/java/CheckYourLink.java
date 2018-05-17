@@ -8,8 +8,6 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.sql.Date;
-import java.time.LocalTime;
 import java.time.ZonedDateTime;
 
 import javax.swing.JLabel;
@@ -18,6 +16,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class CheckYourLink {
+	private static final String String = null;
+
 	static ZonedDateTime date = ZonedDateTime.now();
 
 	private static String titleWindow = "URL Parser";
@@ -25,13 +25,13 @@ public class CheckYourLink {
 	private static String windowInsideLabel = "URL to parset";
 	private static String parseAgainOpiton = "Input URL";
 	private static String parseUrlOption = "Process URL";
-	private static String exitOpiton = "Exit";
+	private static String exitOption = "Exit";
 	
 	private static String warning = "User inputed URL: ";
 	private static String warning1 = "to parse";
 	private static String warning2 = "which io not Valide";
-	private String warning3 = "For URL: ";
-	private String warning4 = "Received response code";
+	private static String warning3 = "For URL: ";
+	private static String warning4 = "Received response code";
 	private static String warning5 = "For URL: ";
 	private static String warning6 = "will be parse again";
 	private static String warning7 = "User closed application";
@@ -40,11 +40,17 @@ public class CheckYourLink {
 	
 	public static void main(String[] args) throws IOException {
 		URL url = null;
-		loger5(url);
+		do {
+			loger5(url);
+			CheckYourLink.choice();
+			validURL(String);
+			parseURL(url);
+			parseURL(url);
+		} while (exitOption != null);
 	}
 	
 	public static void choice() throws IOException {
-		Object[] options = {parseUrlOption, exitOpiton};
+		Object[] options = {parseUrlOption, exitOption};
 		JLabel label = new JLabel(windowInsideLabel);
 		JTextField textField = new JTextField();
 		JPanel panel = new JPanel(new BorderLayout());
@@ -55,7 +61,7 @@ public class CheckYourLink {
 				null, panel, titleWindow, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
 		if (result == JOptionPane.YES_OPTION) {
 			String url = textField.getText();
-			validURL(url);
+			return;
 		} else if (result == JOptionPane.CLOSED_OPTION || result == JOptionPane.NO_OPTION) {
 			loger4(null);
 		}
@@ -64,15 +70,14 @@ public class CheckYourLink {
 	public static void validURL(String urlString) throws IOException {
 		try {
 			URL url = new URL(urlString);
-			parseURL(url);
 			loger1(url);
 		} catch(MalformedURLException exception) {
 			String windowInsideLabel = "URL: " + urlString + " is incorrect";
-			Object[] options = {parseAgainOpiton, exitOpiton};
+			Object[] options = {parseAgainOpiton, exitOption};
 			int result = JOptionPane.showOptionDialog(null, windowInsideLabel, titleWindow, JOptionPane.YES_NO_OPTION,
 					JOptionPane.INFORMATION_MESSAGE, null, options, null);
 			if (result == JOptionPane.YES_OPTION) {
-				choice();
+				loger5(null);
 			} else if (result == JOptionPane.CLOSED_OPTION || result == JOptionPane.NO_OPTION) {
 				loger4(null);
 			}
@@ -111,49 +116,49 @@ public class CheckYourLink {
 			validURL(url.toString());
 		} else if (parse.startsWith("4")) {
 			loger3(url);
-			
 		} else if (parse.startsWith("5")) {
 			do {  
-				parseURL(url);
-			} while (parse.substring(0, Math.min(parse.length(), 10)) != null);
-			choice();
+				return;
+			} while (parse.substring(0, Math.min(parse.length(), 10)) != null);///
 		}
 	}
 	
 	public static void loger(URL url) throws FileNotFoundException {
 		PrintWriter zapis = new PrintWriter("saveIP.txt");
-		zapis.println(warning + url + warning1 + date);
+		zapis.println(date + warning + url + warning1);
 		zapis.close();
+		return;
 	}
 	public static void loger1(URL url) throws IOException {
 		PrintWriter zapis = new PrintWriter("saveIP.txt");
-		zapis.println(warning + url + warning2 + date);
+		zapis.println(date + warning + url + warning2);
 		zapis.close();
+		return;
 		
 	}
 	public void loger2(URL url) throws FileNotFoundException {
 		PrintWriter zapis = new PrintWriter("saveIP.txt");
-		zapis.println(warning3 + url + warning4 + date);
+		zapis.println(date + warning3 + url + warning4);
 		zapis.close();
 	}
 	public static void loger3(URL url) throws IOException {
 		PrintWriter zapis = new PrintWriter("saveIP.txt");
-		zapis.println(warning5 + url + warning6 + date);
+		zapis.println(date + warning5 + url + warning6);
 		zapis.close();
-		parseURL(url);
+		return;
+		
 	}
 	public static void loger4(URL url) throws FileNotFoundException {
 		PrintWriter zapis = new PrintWriter("saveIP.txt");
-		zapis.println(warning7 + date);
+		zapis.println(date + warning7);
 		zapis.close();
 		System.exit(0);
 		
 	}
 	public static void loger5(URL url) throws IOException {
 		PrintWriter zapis = new PrintWriter("saveIP.txt");
-		zapis.println(warning8 + date);
+		zapis.println(date + warning8);
 		zapis.close();
-		CheckYourLink checkYourLink = new CheckYourLink();
-		CheckYourLink.choice();
+		return;
 	}
 }
