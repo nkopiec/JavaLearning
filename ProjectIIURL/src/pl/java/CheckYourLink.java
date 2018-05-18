@@ -8,6 +8,7 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.time.ZonedDateTime;
 
 import javax.swing.JLabel;
@@ -16,7 +17,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class CheckYourLink {
-	private static final String String = null;
 
 	static ZonedDateTime date = ZonedDateTime.now();
 
@@ -43,8 +43,7 @@ public class CheckYourLink {
 		do {
 			loger5(url);
 			CheckYourLink.choice();
-			validURL(String);
-			parseURL(url);
+			
 			parseURL(url);
 		} while (exitOption != null);
 	}
@@ -61,7 +60,7 @@ public class CheckYourLink {
 				null, panel, titleWindow, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
 		if (result == JOptionPane.YES_OPTION) {
 			String url = textField.getText();
-			return;
+			validURL(url);
 		} else if (result == JOptionPane.CLOSED_OPTION || result == JOptionPane.NO_OPTION) {
 			loger4(null);
 		}
@@ -94,46 +93,51 @@ public class CheckYourLink {
 		if (parse.length() != 3) {
 			loger1(url);
 		}
-		
-		if (parse.startsWith("2")) {
-			parse.substring(0, Math.min(parse.length(), 10));
-			String path = "saveIP.txt";
-			File file = new File(path);
-			File dane = new File("saveIP.txt");
-			if (file.exists() == false) {
-				file.createNewFile();
+			if (parse.startsWith("2")) {
+				parse.substring(0, Math.min(parse.length(), 10));
+				String path = "saveIP.txt";
+				File file = new File(path);
+				File dane = new File("saveIP.txt");
+				if (file.exists() == false) {
+					file.createNewFile();
+				}
+				if(dane.exists()) {
+					System.out.println("istnieje");
+				} else {
+					System.out.println("nie istnieje");
+				}
+				PrintWriter zapis = new PrintWriter("saveIP.txt");
+				zapis.println(parse.substring(0, Math.min(parse.length(), 10)));
+				zapis.close();
+				loger(url);
+			} else if (parse.startsWith("3")) {
+				validURL(url.toString());
+			} else if (parse.startsWith("4")) {
+				loger3(url);
+			} else if (parse.startsWith("5")) {
+				do {  
+					return;
+				} while (parse.substring(0, Math.min(parse.length(), 10)) != null);///
+		//try {
+		//	} catch (UnknownHostException exception) {
+		//		status.log(exception);
+		//	} catch (IOException exception) {
+		//		parse.isMulticastAddress(exception, false);
 			}
-			if(dane.exists()) {
-				System.out.println("istnieje");
-			} else {
-				System.out.println("nie istnieje");
-			}
-			PrintWriter zapis = new PrintWriter("saveIP.txt");
-			zapis.println(parse.substring(0, Math.min(parse.length(), 10)));
-			zapis.close();
-			loger(url);
-		} else if (parse.startsWith("3")) {
-			validURL(url.toString());
-		} else if (parse.startsWith("4")) {
-			loger3(url);
-		} else if (parse.startsWith("5")) {
-			do {  
-				return;
-			} while (parse.substring(0, Math.min(parse.length(), 10)) != null);///
-		}
+		//}
 	}
 	
-	public static void loger(URL url) throws FileNotFoundException {
+	public static void loger(URL url) throws IOException {
 		PrintWriter zapis = new PrintWriter("saveIP.txt");
 		zapis.println(date + warning + url + warning1);
 		zapis.close();
-		return;
+		choice();
 	}
 	public static void loger1(URL url) throws IOException {
 		PrintWriter zapis = new PrintWriter("saveIP.txt");
 		zapis.println(date + warning + url + warning2);
 		zapis.close();
-		return;
+		parseURL(url);
 		
 	}
 	public void loger2(URL url) throws FileNotFoundException {
@@ -145,7 +149,7 @@ public class CheckYourLink {
 		PrintWriter zapis = new PrintWriter("saveIP.txt");
 		zapis.println(date + warning5 + url + warning6);
 		zapis.close();
-		return;
+		parseURL(url);
 		
 	}
 	public static void loger4(URL url) throws FileNotFoundException {
@@ -159,6 +163,6 @@ public class CheckYourLink {
 		PrintWriter zapis = new PrintWriter("saveIP.txt");
 		zapis.println(date + warning8);
 		zapis.close();
-		return;
+		choice();
 	}
 }
