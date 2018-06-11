@@ -26,4 +26,5 @@ public class ZooActivity<S extends Zooable> {
 	public void doFun() {
 		zoo.fun();
 	}
+
 }

@@ -24,6 +24,6 @@ public class Main {
 		ZooActivity<Zooable> zooAtivity3 = new ZooActivity<Zooable>(zebra);
 		zooAtivity3.doRun();
 		
-		
+	
 	}
 }
