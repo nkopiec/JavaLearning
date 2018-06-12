@@ -5,18 +5,33 @@ class Kindergarten {
 	Object zosia;
 	Object basia;
 
-	public Kindergarten(Object j, Object z, Object b) {
-		jan = j;
-		zosia = z;
-		basia = b;
+	public Kindergarten(Object jan, Object zosia, Object basia) {
+		this.jan = jan;
+		this.zosia = zosia;
+		this.basia = basia;
 	}
 
+	public Object getJan() {
+		return jan;
+	}
 
-	public Object getJan() { return jan; }
-	public Object getZosia()   { return zosia; }
-	public Object getBasia()   { return basia; }
+	public void setJan(Object jan) {
+		this.jan = jan;
+	}
 
-	public void setJan(Object j) { jan = j; }
-	public void setZosia(Object z) { zosia = z; }
-	public void setBasia(Object b) { basia = b; }
+	public Object getZosia() {
+		return zosia;
+	}
+
+	public void setZosia(Object zosia) {
+		this.zosia = zosia;
+	}
+
+	public Object getBasia() {
+		return basia;
+	}
+
+	public void setBasia(Object basia) {
+		this.basia = basia;
+	}
 }
