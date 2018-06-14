@@ -1,12 +1,17 @@
 package pl.java;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Main {
 	public static void main(String[] args) {
-		ArrayList<Integer> list1 = new ArrayList<Integer>();
-		//Not possible
-		//ArrayList<Object> list2 = list1;
 		ArrayList<Object> l0 = new ArrayList<>();
 		l0.add(new Object());
 		
@@ -21,7 +26,7 @@ public class Main {
 		Util.write2(l0);
 		Util.write3(l1);
 		
-		ArrayList<String> list2 = new ArrayList<String>();
+		
 		
 		ArrayList<String> Person = new ArrayList<>();
 		Person.toString();
@@ -37,6 +42,27 @@ public class Main {
 		
 		Para para = Main.copy(para0, para1);
 		System.out.println(para.getFirst());
+		
+		
+		List<Employee> elist = Arrays.asList(
+				new Employee("Jan", "Malinowski", 1200),
+				new Employee("Jan", "Malonowski", 1000),
+				new Employee("Jan", "Nowak", 1000),
+				new Employee("Jan", "Kwiatkowski", 1000));
+		
+		Set<Employee> set = new LinkedHashSet<>(elist);
+		System.out.println(set);
+		
+		Set<Employee> set0 = new HashSet<>(elist);
+		System.out.println(set0);
+		
+		Set<String> set1 = new TreeSet<>( Arrays.asList("Malinowski", "Malinowski", "Nowak", "Kwiatkowski"));
+		System.out.println(set1);
+		
+		Collections.sort( Arrays.asList("Malinowski", "Malinowski", "Nowak", "Kwiatkowski"));
+		Collections.sort(elist);
+		System.out.println(elist);
+		
 	}
 		
 	public static <S,T> Para<? super S, ? super T>
