@@ -1,14 +1,19 @@
 package pl.java;
 
+import java.text.Collator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 import java.util.TreeSet;
+
+import javax.jws.Oneway;
 
 public class Main {
 	public static void main(String[] args) {
@@ -46,9 +51,9 @@ public class Main {
 		
 		List<Employee> elist = Arrays.asList(
 				new Employee("Jan", "Malinowski", 1200),
-				new Employee("Jan", "Malonowski", 1000),
-				new Employee("Jan", "Nowak", 1000),
-				new Employee("Jan", "Kwiatkowski", 1000));
+				new Employee("Jan", "Malonowski", 1400),
+				new Employee("Jan", "Nowak", 1500),
+				new Employee("Jan", "Kwiatkowski", 900));
 		
 		Set<Employee> set = new LinkedHashSet<>(elist);
 		System.out.println(set);
@@ -62,6 +67,46 @@ public class Main {
 		Collections.sort( Arrays.asList("Malinowski", "Malinowski", "Nowak", "Kwiatkowski"));
 		Collections.sort(elist);
 		System.out.println(elist);
+		
+		Collections.sort(elist, new Comparator<Employee>() {
+			@Override
+			public int compare(Employee e1, Employee e2) {
+				return e1.getSalary() - e2.getSalary();
+			}
+		});
+		System.out.println(elist);
+		
+		Collections.sort(elist, Collections.reverseOrder());
+		System.out.println(elist);
+		
+		List<String> polski = Arrays.asList("¿", "¹", "³", "ê");
+		Collections.sort(polski);
+		System.out.println(polski);
+		
+		Collections.sort(polski , Collator.getInstance(new Locale("pl")));
+		System.out.println(polski);
+		
+		elist.sort( new Comparator<Employee>() {
+
+			@Override
+			public int compare(pl.java.Employee o1, pl.java.Employee o2) {
+				return hashCode();
+			}
+			
+		});
+		System.out.println(elist);
+		
+		Set<Employee> tset = new TreeSet<>(elist);
+		System.out.println(tset);
+		
+		tset = new TreeSet<>(new Comparator<Employee>() {
+			@Override
+			public int compare(Employee e1, Employee e2) {
+				return e1.getSalary() - e2.getSalary();
+			}
+		});
+		tset.addAll(elist);
+		System.out.println(tset);
 		
 	}
 		
