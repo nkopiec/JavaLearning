@@ -47,7 +47,10 @@ public class SchoolClass implements Comparable<SchoolClass> {
 	@Override
 	public int compareTo(SchoolClass other) {
 		int res = surname.compareTo(surname);
-		if (res == 0) res = name.compareTo(other.name);
+		if (res == 0) {
+			res = name.compareTo(other.name);
+		}
+		System.out.println(res);
 		return res;
 	}
 }

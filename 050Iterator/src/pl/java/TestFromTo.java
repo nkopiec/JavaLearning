@@ -7,15 +7,15 @@ import java.util.Calendar;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class FromTo implements Iterable<Calendar> {
+public class TestFromTo implements Iterable<Calendar> {
 	private Calendar from = Calendar.getInstance(),
 					to = Calendar.getInstance();
-	
-	public FromTo(String fromString, String toString) throws IllegalAccessException {
-		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		
+	public TestFromTo(String fromString, String toString) throws IllegalAccessException {
+		DateFormat df1 = new SimpleDateFormat("yyyy-MM-dd");
 		try {
-			from.setTime(df.parse(fromString));
-			to.setTime(df.parse(toString));
+			from.setTime(df1.parse(fromString));
+			to.setTime(df1.parse(toString));
 		} catch (ParseException exc) {
 			throw new IllegalAccessException(exc.getMessage());
 		}
@@ -28,19 +28,19 @@ public class FromTo implements Iterable<Calendar> {
 				current.setTime(from.getTime());
 				current.add(Calendar.DATE, -1);
 			}
-			
+				
 			public boolean hasNext() {
 				next.setTime(current.getTime());
 				next.add(Calendar.DATE, 1);
 				return next.compareTo(to) <= 0;
 			}
-			
+				
 			public Calendar next() {
 				if (!hasNext()) throw new NoSuchElementException();
 				current.add(Calendar.DATE, 1);
 				return current;
 			}
-			
+				
 			public void remove() {
 				throw new UnsupportedOperationException();
 			}

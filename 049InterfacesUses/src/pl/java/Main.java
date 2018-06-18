@@ -13,6 +13,25 @@ import java.util.TreeSet;
 public class Main {
 
 	public static void main(String[] args) {
+		Person p0 = new Person("Jan", "Kowalski", 20);
+		Person p1 = new Person("Jan", "Kowalski", 20);
+		Person p2 = new Person("Jan", "Kowalski", 21);
+		List<Person> persons = Arrays.asList(p0, p1, p2);
+		System.out.println("HashSet");
+		Set<Person> hashSet = new HashSet<>(persons);
+		System.out.println(hashSet);
+		
+		System.out.println("LinkedHashSet");
+		Set<Person> linkedHashSet = new LinkedHashSet<>(persons);
+		System.out.println(linkedHashSet);
+
+		System.out.println("TreeSet");
+		Set<Person> treeSet = new TreeSet<>(persons);
+		System.out.println(treeSet);
+		
+		
+		System.exit(0);
+		
 		ArrayList<String> SchoolClass = new ArrayList<>();
 		SchoolClass.toString();
 
@@ -25,8 +44,10 @@ public class Main {
 				new SchoolClass("Jakub", "Anio³", 3.0, 17));
 		
 		// wszyscy uczniowie 
+		System.out.println("======================Set");
 		Set<SchoolClass> set1 = new HashSet<>(clas);
 		System.out.println(set1);
+		System.out.println("======================Set");
 		//po kolei
 		Set<SchoolClass> set2 = new LinkedHashSet<>(clas);
 		System.out.println(set2);
