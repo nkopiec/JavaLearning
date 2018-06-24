@@ -4,14 +4,18 @@ package pl.java;
 import java.awt.List;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+
+import javax.swing.JOptionPane;
 
 
 public class Quiz {
@@ -71,7 +75,31 @@ public class Quiz {
 			exec2.execute(new FutureFib(new FibCall(n)));
 		}
 		exec2.shutdown();
+	
+		Map<String, Future<?>> taskMap = new HashMap<>();
+		ExecutorService exec3 = Executors.newCachedThreadPool();
+		for (char c : "ABCDEF".toCharArray()) {
+			String lett = ""+c;
+			taskMap.put(lett, exec3.submit(new LetterTask(lett)));
+		}
+		
+		String s = JOptionPane.showInputDialog(
+				"Tasks to stop [A, B...], Cencel - stop all");
+		if (s == null) 
+		for (String taskLett : s.trim().toUpperCase().split("\\s")) {
+			Object taskLet = null;
+			Future<?> task = taskMap.get(taskLet);
+			if (task != null) {
+				task.cancel(true);
+				taskMap.remove(taskLett);
+			}
+			if (taskMap.size() == 0 ) break;
+		}
+		((ExecutorService) exec).shutdownNow();
 	}
+
+	
+	
 	
 
 	private static void showMessageDialog(Object object, String string) {

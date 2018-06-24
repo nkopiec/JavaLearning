@@ -14,9 +14,10 @@ public class Timer extends Thread {
 				int minutes = time/60;
 				int sec = time%60;
 				System.out.println(minutes + ":" + sec);
-				
+				Thread timerThread = null;
 			}
 		}
+	
 }
   
 
