@@ -96,6 +96,16 @@ public class Quiz {
 			if (taskMap.size() == 0 ) break;
 		}
 		((ExecutorService) exec).shutdownNow();
+		
+		final int T = 102;
+		final int N = 7;
+		
+		Balance b = new Balance();
+		
+		ExecutorService exec4 = Executors.newCachedThreadPool();
+		for (int i = 1; i <= T; i++)
+			exec4.execute(new BalanceFuture("W" + i,  new BalanceTask(b, N)));
+		exec4.shutdown();
 	}
 
 	
