@@ -14,6 +14,8 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 import javax.swing.JOptionPane;
 
@@ -106,6 +108,23 @@ public class Quiz {
 		for (int i = 1; i <= T; i++)
 			exec4.execute(new BalanceFuture("W" + i,  new BalanceTask(b, N)));
 		exec4.shutdown();
+	}
+	
+Lock lock = new ReentrantLock();
+	
+	Runnable task1 = new Runnable() {
+		public void run() {
+			System.out.println("task 1 begins");
+			try {
+				lockInterruptiibly();
+				System.out.println("task 1 entered");
+			} catch(InterruptedException exc) {
+				System.out.println("task 1 interrupted");
+			} finally {
+				lock.unlock();
+			}
+			System.out.println("task 1 stopped");
+		}
 	}
 
 	

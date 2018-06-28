@@ -21,4 +21,23 @@ public class StringTab {
 			lock.unlock();
 		}
 	}
+	
+	Lock lock1 = new ReentrantLock();
+	
+	Runnable task1 = new Runnable() {
+		public void run() {
+			System.out.println("task 1 begins");
+			try {
+				lockInterruptiibly();
+				System.out.println("task 1 entered");
+			} catch(InterruptedException exc) {
+				System.out.println("task 1 interrupted");
+			} finally {
+				lock.unlock();
+			}
+			System.out.println("task 1 stopped");
+		}
+	}
+	
+}
 }
