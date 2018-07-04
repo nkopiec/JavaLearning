@@ -3,6 +3,8 @@ package pl.java;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.TooManyListenersException;
+import java.util.stream.Collector;
 
 public interface Main {
 	public static void main(String[] args) {
@@ -30,11 +32,13 @@ public interface Main {
 		System.out.println(doPodwyzki);
 
 	}
-
-	static <T, S> List<T> create(List<S> src, Filter<S> f, Transformer<T, S> t) {
+	
+		static <T, S> List<T> create(List<S> src, Filter<S> f, Transformer<T, S> t) {
 		List<T> target = new ArrayList<>();
 		for (S e : src)
 			if (f.test(e)) target.add(t.transform(e));
 		return target;
 	}
+		
+		
 }
