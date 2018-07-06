@@ -40,5 +40,4 @@ public interface Main {
 		return target;
 	}
 		
-		
 }
